@@ -5,7 +5,7 @@ class MyThread1 extends Thread {
 
 	public void run() {
 		for (int i = 1; i <= 20; i++) {
-			System.out.println(i);
+			System.out.println(currentThread().getName() + " "+i);
 		}
 	}
 
@@ -20,7 +20,8 @@ public class ThreadDemo {
 		MyThread1 myThread2 = new MyThread1();
 		
 		// In order to execute this thread,start()method should be called
-
+		System.out.println("Name of 1st thread " +myThread1.getName());
+		System.out.println("Name of 1st thread " +myThread2.getName());
 		myThread1.start();
 		myThread2.start();
 
