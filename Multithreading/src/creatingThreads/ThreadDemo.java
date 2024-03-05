@@ -1,24 +1,29 @@
 package creatingThreads;
 //As Thread class belongs to java.lang package,there is no need to import anything to use Threads
 
- class MyThread1 extends Thread{
-	
-	 public void run() {
-		 System.out.println("MyThread1 is running");
-	 }
-}
+class MyThread1 extends Thread {
 
+	public void run() {
+		for (int i = 1; i <= 20; i++) {
+			System.out.println(i);
+		}
+	}
+
+}
 
 public class ThreadDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
-		MyThread1 newThread = new MyThread1(); //instantiating object of Thread class
-		//In order to execute this thread,start()method should be called
+		// instantiating object of Thread class
+		MyThread1 myThread1 = new MyThread1();
+		MyThread1 myThread2 = new MyThread1();
 		
-		newThread.start();
-		
+		// In order to execute this thread,start()method should be called
+
+		myThread1.start();
+		myThread2.start();
+
 	}
 
 }
