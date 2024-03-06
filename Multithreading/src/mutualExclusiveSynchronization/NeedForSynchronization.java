@@ -2,7 +2,7 @@ package mutualExclusiveSynchronization;
 
 class Counter {
 	int count = 0;
-	void increment() {
+	synchronized void increment() {
 		count++;
 	}
 }
@@ -34,3 +34,6 @@ public class NeedForSynchronization{
 //Output of above program
 //Value of count : 19621 (might vary every time it runs)
 //Value of count : 13169
+//After adding synchronized keyword to method increment
+//Output of above program
+//Value of count : 20000
