@@ -1,4 +1,4 @@
-package using_sleep_method;
+package sleepMethod;
 
 //Thread.sleep causes the current thread to suspend execution for a specified period. 
 //This is an efficient means of making processor time available to the other threads 

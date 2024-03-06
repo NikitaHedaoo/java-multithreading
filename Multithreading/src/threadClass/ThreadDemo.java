@@ -1,4 +1,4 @@
-package creatingThreads;
+package threadClass;
 //As Thread class belongs to java.lang package,there is no need to import anything to use Threads
 
 class MyThread1 extends Thread {
