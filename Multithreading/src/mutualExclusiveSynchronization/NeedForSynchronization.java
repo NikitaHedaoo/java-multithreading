@@ -1,73 +1,36 @@
 package mutualExclusiveSynchronization;
 
-class MyThread1 implements Runnable{
-
-	MyThread1(){
-		
-		Thread th = new Thread(this);
-		th.start();
-	}
-	@Override
-	public void run() {
-		
-		Table t1= new Table();
-		t1.display(5);
-	}
-	
-}
-class MyThread2 implements Runnable{
-
-	MyThread2(){
-		
-		Thread th2 = new Thread(this);
-		th2.start();
-	}
-	@Override
-	public void run() {
-		
-		Table t2= new Table();
-		t2.display(6);
-	}
-	
-}
-
-class Table{
-	
-	void display(int n) {
-		for(int i=1; i<=10; i++) {
-			System.out.println("Printting " + n + " * " + i + " = " + n*i);
-		}
+class Counter {
+	int count = 0;
+	void increment() {
+		count++;
 	}
 }
-public class NeedForSynchronization {
 
-	public static void main(String[] args) {
+public class NeedForSynchronization{
+
+	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-
-		MyThread1 mT1 = new MyThread1();
-		MyThread2 mT2 = new MyThread2();
+		Counter c = new Counter();
+		Thread mT1 = new Thread(new Runnable() {
+			public void run() {				
+				for(int i=0; i<10000; i++)
+				c.increment();
+			}
+		});		
+		Thread mT2 = new Thread(new Runnable() {
+			public void run() {	
+				for(int i=0; i<10000; i++)
+				c.increment();
+			}
+		});
+		mT1.start();
+		mT2.start();
+		mT1.join();
+		mT2.join();
+		System.out.println("Value of count : "+ c.count);
 	}
-
 }
 //Output of above program
-
-//Printting 5 * 1 = 5
-//Printting 5 * 2 = 10
-//Printting 6 * 1 = 6
-//Printting 5 * 3 = 15
-//Printting 6 * 2 = 12
-//Printting 6 * 3 = 18
-//Printting 6 * 4 = 24
-//Printting 6 * 5 = 30
-//Printting 6 * 6 = 36
-//Printting 5 * 4 = 20
-//Printting 5 * 5 = 25
-//Printting 5 * 6 = 30
-//Printting 5 * 7 = 35
-//Printting 5 * 8 = 40
-//Printting 5 * 9 = 45
-//Printting 5 * 10 = 50
-//Printting 6 * 7 = 42
-//Printting 6 * 8 = 48
-//Printting 6 * 9 = 54
-//Printting 6 * 10 = 60
+//Value of count : 19621 (might vary every time it runs)
+//Value of count : 13169
