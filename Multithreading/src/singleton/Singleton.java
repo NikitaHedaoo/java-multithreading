@@ -16,7 +16,7 @@ public class Singleton {
 	//public -> to allow access from outside the class
 	//static -> to allow access by class name
 	//returns an instance of Singleton class, hence return type is Singleton
-	public static Singleton getSingletonInstance() {
+	public static synchronized Singleton getSingletonInstance() {
 		
 		//check if singletonInstance exists already or is null
 		if(singletonInstance==null) {
