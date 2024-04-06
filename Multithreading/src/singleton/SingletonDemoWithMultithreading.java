@@ -9,7 +9,8 @@ public class SingletonDemoWithMultithreading {
 		Thread t1 = new Thread(new Runnable(){
 			
 			public void run() {
-				Singleton object1 = Singleton.getSingletonInstance();
+				SynchronizedSingleton object1 = SynchronizedSingleton.getSynchronizedSingletonInstance();
+				System.out.println("Object 1 hashcode : " + object1.hashCode());
 			}
 		});
 		
@@ -18,7 +19,8 @@ public class SingletonDemoWithMultithreading {
 			
 			public void run() {
 			
-				Singleton object2 = Singleton.getSingletonInstance();
+				SynchronizedSingleton object2 = SynchronizedSingleton.getSynchronizedSingletonInstance();
+				System.out.println("Object 2 hashcode : " + object2.hashCode());
 			}
 		});
 		
