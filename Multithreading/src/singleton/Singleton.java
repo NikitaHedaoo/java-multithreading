@@ -10,7 +10,7 @@ public class Singleton {
 	//private constructor to ensure instance of the class can't be created using 'new' keyword 
 	//from outside this class
 	private Singleton() {
-		
+		System.out.println("Instance created");
 	}
 	
 	//public -> to allow access from outside the class
